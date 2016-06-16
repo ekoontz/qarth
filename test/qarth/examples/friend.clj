@@ -2,6 +2,7 @@
   (require (qarth [oauth :as oauth]
                   util friend)
            qarth.impl.github
+           qarth.impl.google
            cemerick.friend
            compojure.handler
            ring.adapter.jetty)
@@ -9,8 +10,8 @@
 
 (def conf (qarth.util/read-resource "keys.edn"))
 
-(def service (oauth/build (assoc (:github conf)
-                                 :type :github
+(def service (oauth/build (assoc (:google conf)
+                                 :type :google
                                  :callback "http://localhost:3000/login")))
 
 (def workflow
